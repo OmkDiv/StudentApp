@@ -1,0 +1,72 @@
+﻿@model StudentApp.Models.StudentGenreViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form asp-controller="Students" asp-action="Index" method="get">
+    <p>
+
+        <select asp-for="StudentBranch" asp-items="Model.Branch">
+            <option value="">All</option>
+        </select>
+
+        Title: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Students![0].Names)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students![0].JoinDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students![0].Branch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students![0].Division)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Students![0].College)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Students!)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Names)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JoinDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Branch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Division)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.College)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
