@@ -21,11 +21,12 @@ namespace StudentApp.Controllers
 
         // GET: Students
         // GET: Movies
+        // GET: Movies
         public async Task<IActionResult> Index(string StudentBranch, string searchString)
         {
             if (_context.Student == null)
             {
-                return Problem("Entity set 'StudentContext.Student'  is null.");
+                return Problem("Entity set 'MvcMovieContext.Movie'  is null.");
             }
 
             // Use LINQ to get list of genres.
